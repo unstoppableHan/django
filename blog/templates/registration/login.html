@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %} 
+    logout
+{% endblock %}
+
+{% block PageHeader %}
+
+<div class='login_body'>
+    <div class="login-page">
+        {% if user.is_active %}
+
+        <h2> Welcome, {{user.username}} </h2>
+        <a href="{% url 'logout' %}">로그아웃</a>
+
+        {% else %}
+        {% if form.errors %}
+        <p>ID나 비밀번호가 일치하지 않습니다.</p>
+        {% endif %}
+        <div class="form">
+            <form class="login-form" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button>login</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Blog Search</title>
+    </head>
+    <body>
+        <p>You Searched for : <strong>{{ query }}</strong></p>
+        {% if publisher %}
+            <p>Found {{ publisher.name }}</p>
+            <p>name {{ publisher.email }}</p>
+            <p>length {{ publisher.name|length }}</p>
+        {% else %}
+            <p>No Matched your search</p>
+        {% endif %}
+    </body>
+</html>

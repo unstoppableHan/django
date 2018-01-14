@@ -1,0 +1,49 @@
+{% extends "base.html" %} 
+
+{% load staticfiles %} 
+
+{% block title %} 
+
+About cryptocurreny
+
+{% endblock %} 
+
+{% block PageHeader %}
+
+<header class="masthead" style="background-image: url({% static 'img/cryptocurrency-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>
+                        Cryptocurrency
+                    </h1>
+                    <span class="subheading">
+                        Another chance to be rich.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for item in object_list %}
+            <a href="{% url 'cryptocurrency_detail' item.id%}">
+                <h2 class="post-title">
+                    {{ item.fullName }} ({{ item.shortName }})
+                </h2>
+            </a>
+            <div class="post-preview">
+                <a href="{{ item.homePage }}">{{ item.homePage }}</a>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
